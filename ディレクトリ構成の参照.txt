@@ -1,0 +1,41 @@
+┬ apps
+│└ [アプリ名]
+│　├ config アプリ単体の設定
+│　│└ routing.yml
+│　├ lib
+│　├ modules
+│　│└ [モジュール名]
+│　│　├ actions
+│　│　│└ actions.class.php モジュール単体の基本動作
+│　│　├ config モジュール単体の設定
+│　│　│└ view.yml
+│　│　├ templates
+│　│　│└ [アクション名]Success.html アクション用テンプレート
+│　│　└ validate
+│　│　　└ [アクション名].yml アクション用バリテーション設定
+│　└ templates アプリ全体の共通テンプレート
+│　　└ layout.html
+├ config プロジェクト全体の設定
+├ lib
+│├ model データベース接続系のディレクトリ
+││├ map ここは自動生成なので編集してはいけない
+│││└ [モデル名]MapBuilder.php
+││├ om ここは自動生成なので編集してはいけない
+│││├ Base[モデル名].php
+│││└ Base[モデル名]Peer.php
+││├ [モデル名].php // データベーステーブルごとの動作
+││└ [モデル名]Peer.php // データベーステーブルごとの動作
+│└ symfony symfony基本ライブラリ
+│　├ helper ヘルパーディレクトリ
+│　│├ FormHelper.php form部品用のヘルパー
+│　│├ TagHelper.php タグ用のヘルパー
+│　│└ UrlHelper.php AタグなどURLに関するヘルパー
+│　└ validator
+│　　└ sfValidator.class.php
+├ web 公開層(ドキュメントルート)
+│├ css
+│├ js
+│├ .htaccess
+│├ [アプリ名]_dev.php デバック用ページ
+│└ index.php
+└ symfony Symfonyコア

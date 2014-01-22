@@ -1,0 +1,15 @@
+{
+    "contents" : "#test git\n\n##GitHub SSHの公開鍵作成\n#1.Git Bashを起動する\n\n#2.ディレクトリの作成\n# $mkdir /c/Users/asi/.ssh\n# $ssh-keygen -t rsa -C \"atsushi.sakurai@tobii.co.jp\"\n\n#3.鍵の作り場所を指定する\n# : /c/Users/asi/.ssh\n\n#4.パスワードの指定\n# : tobii\n\n#5.秘密鍵と公開鍵が作成される\n#  秘密鍵:id_rsa\n#  公開鍵:id_rsa.pub\n\n#6.GitHubへ公開鍵の設定\n#github にアクセスし、ログインしてください。\n#画面右上の [ Account Settings ] からアカウントの設定画面へ行き\n#[ SSH Public Keys ] をクリックして、 SSH 公開鍵設定画面へ行きます。\n#[ Add another public key ] と書かれたリンクをクリックすると入力フォームが出てきます。\n#そこに先ほど作成した公開鍵の中身をコピペする。\n\n#7.SSH接続確認\n# $ssh -T git@github.com\n# $yes\n# $tobii\n\n# ***Enter passphrase for key …と聞かれたら\"tobii\"と入力する\n\n##Gitの設定\n#1.GitHub連携するためのアクセストークン等のgit設定を行う\n# $ git config --global user.name \"AtsushiSakurai-tobii\"\n# $ git config --global user.email \"atsushi.sakurai@tobii.co.jp\"\n\n#2.アクセストークンの設定\n# GitHub->AccountSetting>Applications>Personal Access Tokens\n# Create new token\n# Token description: tobii1 *任意な項目を入力する\n# Create Token\n\n#3.Comandline\n# $ git config --global github.user AtsushiSakurai-tobii(Username)\n# $ git config --global github.token 生成したToken\n\n##リポジトリの作成(Github)\n#1.リポジトリの作成\n# GitHub->(右上)Create a new repo\n# Repository name: test\n# Description    : test\n# Publir         : selected\n# Initialize this repository with a README: checked\n# Add gitgnore: selected \"R\"\n# Create repository\n\n##リポジトリ作成(Local)\n# $ mkdir test\n# $ git init(初期化)\n\n##READMEファイルを作成(Local)\n# $ touch README\n# Editorにて編集する\n# save\n\n##ローカルリポジトリにファイルをコミットする\n# $ git add README\n# $ git commit -m '1st commit test' (コメントを記載する)\n\n##リモートリポジトリにアップする\n# $ git remote add origin git@github.com:AtsushiSakurai-tobii/test.git\n# $ git puch -u origin master\n\n##GitHubへのアップロード完了\n\n##Rstudioでのバージョン管理\n# http://d.hatena.ne.jp/EulerDijkstra/20130327/1364392046\n#1. Project>Create new project\n\n#初期リポジトリ作成時にコミットErrorとなるため以下を実行する\n# $ git fetch\n# $ git status\n# $ git merge origin/master\n# $ git status\n# $ git push -u origin master\n# $ git push\n\n# ***Enter passphrase for key …と聞かれたら\"tobii\"と入力する\n\n#Rstudio updateしたらComment(Commit message)を入力して\"Commit\"する",
+    "created" : 1390373173589.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1336141825",
+    "id" : "5356790E",
+    "lastKnownWriteTime" : 1390216896,
+    "path" : "~/test/test.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
