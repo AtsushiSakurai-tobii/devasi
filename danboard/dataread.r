@@ -1,4 +1,4 @@
-#データ読み込みファイル
+##データ読み込みファイル
 setwd("C:/R/apps/danboard/modules/usr/lib/")
 library("xlsx")
 

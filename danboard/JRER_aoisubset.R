@@ -1,3 +1,4 @@
+##
 setwd("C:/R/apps/danboard/modules/templates/")
 #対象データの抽出
 #aoilistからTTF,Step1/2,FAR/NEARを抽出する

@@ -1,4 +1,4 @@
-#setwd("C:/R/app/danboard/modules/actions/")
+##setwd("C:/R/app/danboard/modules/actions/")
 #基礎プロット
 install.packages("GGally")
 library(GGally)

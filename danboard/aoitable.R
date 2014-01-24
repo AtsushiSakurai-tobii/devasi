@@ -1,4 +1,4 @@
-#setwd("C:/R/apps/danboard/modules/actions")
+##setwd("C:/R/apps/danboard/modules/actions")
 ##抽出用for文
 #ver1
 #List<- data.frame()
