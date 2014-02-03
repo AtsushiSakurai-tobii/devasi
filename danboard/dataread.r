@@ -1,5 +1,5 @@
 ##データ読み込みファイル
-setwd("C:/R/apps/danboard/modules/usr/lib/")
+setwd("C:/R/dev/apps/danboard/usr/lib/")
 library("xlsx")
 
 attlist  <- read.xlsx("JRER_Master_r.xlsx", 1,  encoding="UTF-8")

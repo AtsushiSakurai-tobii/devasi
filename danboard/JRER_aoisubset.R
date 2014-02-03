@@ -1,5 +1,5 @@
 ##
-setwd("C:/R/apps/danboard/modules/templates/")
+setwd("C:/R/dev/apps/danboard/")
 #対象データの抽出
 #aoilistからTTF,Step1/2,FAR/NEARを抽出する
 Far.Stp1 <- subset(aoilist, aoilist$distance == "FAR"  & aoilist$step == "Step1" & aoilist$name != "No Modifier")
@@ -7,22 +7,20 @@ Far.Stp2 <- subset(aoilist, aoilist$distance == "FAR"  & aoilist$step == "Step2"
 Ner.Stp1 <- subset(aoilist, aoilist$distance == "NEAR" & aoilist$step == "Step1" & aoilist$name != "No Modifier")
 Ner.Stp2 <- subset(aoilist, aoilist$distance == "NEAR" & aoilist$step == "Step2" & aoilist$name != "No Modifier")
 
-source("funcaoi.r")
+ttf.df1 <- data.frame(AOITABLE(Far.Stp1, ttf, "t."))
+ttf.df2 <- data.frame(AOITABLE(Far.Stp2, ttf, "t."))
+ttf.df3 <- data.frame(AOITABLE(Ner.Stp1, ttf, "t."))
+ttf.df4 <- data.frame(AOITABLE(Ner.Stp2, ttf, "t."))
 
-ttf.df1 <- data.frame(aoidf(Far.Stp1, ttf, "t."))
-ttf.df2 <- data.frame(aoidf(Far.Stp2, ttf, "t."))
-ttf.df3 <- data.frame(aoidf(Ner.Stp1, ttf, "t."))
-ttf.df4 <- data.frame(aoidf(Ner.Stp2, ttf, "t."))
+dur.df1 <- data.frame(AOITABLE(Far.Stp1, dur, "d."))
+dur.df2 <- data.frame(AOITABLE(Far.Stp2, dur, "d."))
+dur.df3 <- data.frame(AOITABLE(Ner.Stp1, dur, "d."))
+dur.df4 <- data.frame(AOITABLE(Ner.Stp2, dur, "d."))
 
-dur.df1 <- data.frame(aoidf(Far.Stp1, dur, "d."))
-dur.df2 <- data.frame(aoidf(Far.Stp2, dur, "d."))
-dur.df3 <- data.frame(aoidf(Ner.Stp1, dur, "d."))
-dur.df4 <- data.frame(aoidf(Ner.Stp2, dur, "d."))
-
-cou.df1 <- data.frame(aoidf(Far.Stp1, cou, "c."))
-cou.df2 <- data.frame(aoidf(Far.Stp2, cou, "c."))
-cou.df3 <- data.frame(aoidf(Ner.Stp1, cou, "c."))
-cou.df4 <- data.frame(aoidf(Ner.Stp2, cou, "c."))
+cou.df1 <- data.frame(AOITABLE(Far.Stp1, cou, "c."))
+cou.df2 <- data.frame(AOITABLE(Far.Stp2, cou, "c."))
+cou.df3 <- data.frame(AOITABLE(Ner.Stp1, cou, "c."))
+cou.df4 <- data.frame(AOITABLE(Ner.Stp2, cou, "c."))
 
 #Ver5
 #Step1と2を合算して出力する

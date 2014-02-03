@@ -1,15 +1,15 @@
 ##
-setwd("C:/R/apps/danboard/modules/actions/")
+setwd("C:/R/dev/apps/danboard/")
 #mainファイル
 
 #データの読み込み
 source("dataread.r")
 
 #aoidf関数(aoiテーブルデータ)の読み込み
-source("C:/R/apps/danboard/modules/actions/aoitable.r")
+source("aoitable.r")
 
 #subset条件に対してaoiテーブルデータを出力する
-source("C:/R/apps/danboard/modules/templates/JRER_aoisubset.R")
+source("JRER_aoisubset.R")
 
 #基礎プロット
 source("basicplot.r")
