@@ -35,7 +35,7 @@ AOITABLE <- function(SUBSET, METRIX, METDOT){
     
     #cleaning(save data)
     #output filename : exp) 01_FAR_Step1.csv
-    filepath <- "C:/R/dev/apps/danboard/usr/out/JRER/"
+    filepath <- paste("C:/R/dev/apps/danboard/usr/out/", projn, "/", sep="")
     filename <- paste(filepath, METDOT, List.no[i], "_", unique(SUBSET[SUBSET$no==List.no[i],]$distance), "_", unique(SUBSET[SUBSET$no==List.no[i],]$step), ".csv", sep="")
     write.csv(aoi_ds, file = filename, append=T, quote=T, col.names=T)  
     
