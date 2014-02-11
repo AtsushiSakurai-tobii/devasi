@@ -42,12 +42,15 @@ NadurSum <- apply(Nadur, 2, sum)
 NacouSum <- apply(Nacou, 2, sum)
 NattfSum <- apply(Nattf, 2, sum)
 
-#有効データ数
+#有効データ数(NA値を除く有効データの個数を確認する)
 (durchk <- t(data.frame(nrow(durget) - NadurSum)))
 (couchk <- t(data.frame(nrow(couget) - NacouSum)))
 (ttfchk <- t(data.frame(nrow(ttfget) - NattfSum)))
+sum(durchk)
+sum(couchk)
+sum(ttfchk)
 
-#有効データ数の確認
+#有効データ数の確認(各メトリクス間のデータ数の差分を確認する)
 CheckDatas <- data.frame(t(rbind(durchk,couchk,ttfchk)))
 CheckData  <- CheckDatas
 CheckData$diff_DC <- CheckData[,1] - CheckData[,2]
@@ -55,4 +58,9 @@ CheckData$diff_DF <- CheckData[,1] - CheckData[,3]
 CheckData$diff_CF <- CheckData[,2] - CheckData[,3]
 
 #差分ないためOKとする
-summary(CheckData)
+if(sum(CheckData$diff_DC) == 0 && sum(CheckData$diff_DF) == 0 && sum(CheckData$diff_DC) == 0){
+  print("CheckData=>OK")
+}else{
+  print("CheckData=>NG")
+  print(summary(CheckData))
+}

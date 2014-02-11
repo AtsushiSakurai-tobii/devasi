@@ -4,9 +4,9 @@ setwd(paste("C:/R/dev/apps/datacheck/", projn, sep=""))
 (couget)
 (ttfget)
 
-plot(durget, type="l")
-boxplot(durget)
-
+#plot(durget, type="l")
+#boxplot(durget)
+ 
 #Histgram
 #各メトリクス全体のヒストグラム
 png(paste("Export_", projn, "_chkplot_hist_allmetrics.png",sep=""), width=1280, height=1024)
@@ -16,6 +16,24 @@ hist(couget, col="blue" , breaks = 300)
 hist(ttfget, col="green", breaks = 300)
 #hist(durget, breaks = "Scott", col="blue")
 dev.off()
+
+#HistgramとBoxplotを表示する
+simple.hist.and.boxplot <- function(x) {
+ hist(x, col = "blue", breaks = 300)
+ rug(x)
+ boxplot(x, horizontal = TRUE, las = 0)
+}
+simple.hist.and.boxplot(durget)
+simple.hist.and.boxplot(couget)
+simple.hist.and.boxplot(ttfget)
+
+#Hist(log)
+#hist(log(durget), col="red"  , breaks = 300)
+#r <- hist(durget)
+r <- hist(durget, col="red"  , breaks = 300)
+r <- hist(couget, col="blue" , breaks = 300)
+r <- hist(ttfget, col="green", breaks = 300)
+plot(r$breaks[-1], r$counts, log='xy', type='h')
 
 #qqnorm:データの正規性確認
 png(paste("Export_", projn, "_chkplot_qqnorm_allmetrics.png",sep=""), width=1280, height=1024)

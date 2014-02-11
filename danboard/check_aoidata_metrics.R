@@ -14,11 +14,4 @@ for(i in 1:ncol(durget)){
 (allmtx_df)
 dim(allmtx_df)
 
-#保存ディレクトリを作成する
-dir.create(paste("C:/R/dev/apps/datacheck/", projn, "_/", sep=""), showWarnings = TRUE)
-
-#保存ファイル名
-projc   <- paste("C:/R/dev/apps/datacheck/", projn, "/Export_", projn, "_AOIData_Checked.csv" , sep="")
-
-#ファイルを保存する
-write.csv(allmtx_df, file=projc, append=T, quote=T, col.names=T)
+savefunc(1,allmtx_df)
