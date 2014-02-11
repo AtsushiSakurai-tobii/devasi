@@ -6,47 +6,6 @@ setwd(paste("C:/R/dev/apps/datacheck/", projn, sep=""))
 
 #plot(durget, type="l")
 #boxplot(durget)
- 
-#Histgram
-#各メトリクス全体のヒストグラム
-png(paste("Export_", projn, "_chkplot_hist_allmetrics.png",sep=""), width=1280, height=1024)
-par(mfrow = c(3,1))
-hist(durget, col="red"  , breaks = 300)
-hist(couget, col="blue" , breaks = 300)
-hist(ttfget, col="green", breaks = 300)
-#hist(durget, breaks = "Scott", col="blue")
-dev.off()
-
-#HistgramとBoxplotを表示する
-simple.hist.and.boxplot <- function(x) {
- hist(x, col = "blue", breaks = 300)
- rug(x)
- boxplot(x, horizontal = TRUE, las = 0)
-}
-simple.hist.and.boxplot(durget)
-simple.hist.and.boxplot(couget)
-simple.hist.and.boxplot(ttfget)
-
-#Hist(log)
-#hist(log(durget), col="red"  , breaks = 300)
-#r <- hist(durget)
-r <- hist(durget, col="red"  , breaks = 300)
-r <- hist(couget, col="blue" , breaks = 300)
-r <- hist(ttfget, col="green", breaks = 300)
-plot(r$breaks[-1], r$counts, log='xy', type='h')
-
-#qqnorm:データの正規性確認
-png(paste("Export_", projn, "_chkplot_qqnorm_allmetrics.png",sep=""), width=1280, height=1024)
-op<-par(mfrow = c(3,1))
-qqnorm( durget )
-qqline( durget, lwd=2, col="red" )
-qqnorm( couget )
-qqline( couget, lwd=2, col="red" )
-qqnorm( ttfget )
-qqline( ttfget, lwd=2, col="red" )
-par(op)
-dev.off()
-
 #
 dursum  <- apply(durget, 2, sum , na.rm = TRUE)
 cousum  <- apply(couget, 2, sum , na.rm = TRUE)
@@ -76,25 +35,62 @@ hist(cousum, breaks = 300, col = "blue")
 hist(ttfsum, breaks = 300, col = "green")
 par(op)
 
-op<-par(mfrow = c(3,1))
-boxplot(durget)
-boxplot(couget)
-boxplot(ttfget)
+#Histgram
+#各メトリクス全体のヒストグラム
+png(paste("Export_", projn, "_chkplot_hist_allmetrics.png",sep=""), width=1280, height=1024)
+par(mfrow = c(3,1))
+hist(durget, col="red"  , breaks = 300)
+hist(couget, col="blue" , breaks = 300)
+hist(ttfget, col="green", breaks = 300)
+#hist(durget, breaks = "Scott", col="blue")
 par(op)
+dev.off()
 
+#HistgramとBoxplotを表示する
+simple.hist.and.boxplot <- function(x) {
+  op<-par(mfrow = c(2,1))
+  hist(x, col = "blue", breaks = 300, xlim = c(0, max(x, na.rm=TRUE)))
+  rug(x)
+  boxplot(melt(x)$value, horizontal = TRUE, las = 0, ylim = range(c(0, max(x, na.rm=TRUE))))
+  par(op)
+}
+simple.hist.and.boxplot(durget)
+simple.hist.and.boxplot(couget)
+simple.hist.and.boxplot(ttfget)
+
+#Hist(log)
+#hist(log(durget), col="red"  , breaks = 300)
+#r <- hist(durget)
+r <- hist(durget, col="red"  , breaks = 300)
+r <- hist(couget, col="blue" , breaks = 300)
+r <- hist(ttfget, col="green", breaks = 300)
+plot(r$breaks[-1], r$counts, log='xy', type='h')
+
+#qqnorm:データの正規性確認
+png(paste("Export_", projn, "_chkplot_qqnorm_allmetrics.png",sep=""), width=1280, height=1024)
 op<-par(mfrow = c(3,1))
-aod <- barplot(durMean, ylab = "Average of Duration(s)", xlab = "AOI")
-arrows(aod, durMean - durSd, aod, durMean + durSd, angle = 90, length = 0.1)
-arrows(aod, durMean + durSd, aod, durMean - durSd, angle = 90, length = 0.1)
-
-aoc <- barplot(couMean, ylab = "Average of Count(n)"   , xlab = "AOI")
-arrows(aoc, couMean - couSd, aoc, couMean + couSd, angle = 90, length = 0.1)
-arrows(aoc, couMean + couSd, aoc, couMean - couSd, angle = 90, length = 0.1)
-
-aot <- barplot(ttfMean, ylab = "Average of TTF(s)"     , xlab = "AOI")
-arrows(aot, ttfMean - ttfSd, aot, ttfMean + ttfSd, angle = 90, length = 0.1)
-arrows(aot, ttfMean + ttfSd, aot, ttfMean - ttfSd, angle = 90, length = 0.1)
+qqnorm( durget )
+qqline( durget, lwd=2, col="red" )
+qqnorm( couget )
+qqline( couget, lwd=2, col="red" )
+qqnorm( ttfget )
+qqline( ttfget, lwd=2, col="red" )
 par(op)
+dev.off()
+
+#op<-par(mfrow = c(3,1))
+#aod <- barplot(durMean, ylab = "Average of Duration(s)", xlab = "AOI")
+#arrows(aod, durMean - durSd, aod, durMean + durSd, angle = 90, length = 0.1)
+#arrows(aod, durMean + durSd, aod, durMean - durSd, angle = 90, length = 0.1)
+#
+#aoc <- barplot(couMean, ylab = "Average of Count(n)"   , xlab = "AOI")
+#arrows(aoc, couMean - couSd, aoc, couMean + couSd, angle = 90, length = 0.1)
+#arrows(aoc, couMean + couSd, aoc, couMean - couSd, angle = 90, length = 0.1)
+#
+#aot <- barplot(ttfMean, ylab = "Average of TTF(s)"     , xlab = "AOI")
+#arrows(aot, ttfMean - ttfSd, aot, ttfMean + ttfSd, angle = 90, length = 0.1)
+#arrows(aot, ttfMean + ttfSd, aot, ttfMean - ttfSd, angle = 90, length = 0.1)
+#par(op)
 
 #散布図行列
 #library("psych", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
