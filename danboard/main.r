@@ -2,14 +2,25 @@
 setwd("C:/R/dev/apps/danboard/")
 #mainファイル
 
+#myfuncの読み込み
+source("func_my.r")
+source("func_save.r")
+
 #データの読み込み
 source("dataread.r")
 
+#データチェック
+source("check_diff.r")
+source("check_aoidata_metrics.r")
+source("check_aoidata_plot.r")
+
+
 #aoidf関数(aoiテーブルデータ)の読み込み
-source("aoitable.r")
+#単一プロジェクト使用のためコメント化
+#source("func_aoitable.r")
 
 #subset条件に対してaoiテーブルデータを出力する
-source("JRER_aoisubset.R")
+source(paste(projn,"_aoisubset.R",sep="")
 
 #基礎プロット
 source("basicplot.r")
