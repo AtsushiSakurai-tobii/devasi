@@ -13,15 +13,15 @@ library("data.table", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
 (ttf)
 
 #<No Modifier>:対象AOIの他のデータは除く
-aoigetlist <- subset(aoilist, aoilist$name2 != "<No Modifier>")
-durgetdm   <- data.matrix(dur[, aoitargetlist$aoino])
-cougetdm   <- data.matrix(cou[, aoitargetlist$aoino])
-ttfgetdm   <- data.matrix(ttf[, aoitargetlist$aoino])
+aoigetlist <- subset(aoilist, aoilist$check == "valid" & aoilist$name2 != "<No Modifier>")
+durgetdm   <- data.matrix(dur[, aoigetlist$duration])
+cougetdm   <- data.matrix(cou[, aoigetlist$count])
+ttfgetdm   <- data.matrix(ttf[, aoigetlist$ttf])
 
 #列名で並べ替える
-durget <- durgets[,order(colnames(durgetdm))]
-couget <- cougets[,order(colnames(cougetdm))]
-ttfget <- ttfgets[,order(colnames(ttfgetdm))]
+durget <- durgetdm[,order(colnames(durgetdm))]
+couget <- cougetdm[,order(colnames(cougetdm))]
+ttfget <- ttfgetdm[,order(colnames(ttfgetdm))]
 
 #基本データの確認
 str(durget)
@@ -60,6 +60,7 @@ CheckData$diff_CF <- CheckData[,2] - CheckData[,3]
 #差分ないためOKとする
 if(sum(CheckData$diff_DC) == 0 && sum(CheckData$diff_DF) == 0 && sum(CheckData$diff_DC) == 0){
   print("CheckData=>OK")
+  print(summary(CheckData))
 }else{
   print("CheckData=>NG")
   print(summary(CheckData))
