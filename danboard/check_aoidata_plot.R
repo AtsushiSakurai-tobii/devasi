@@ -47,6 +47,7 @@ par(op)
 dev.off()
 
 #HistgramとBoxplotを表示する
+library(reshape2) #melt関数を使用する
 simple.hist.and.boxplot <- function(x) {
   op<-par(mfrow = c(2,1))
   hist(x, col = "blue", breaks = 300, xlim = c(0, max(x, na.rm=TRUE)))
@@ -54,9 +55,15 @@ simple.hist.and.boxplot <- function(x) {
   boxplot(melt(x)$value, horizontal = TRUE, las = 0, ylim = range(c(0, max(x, na.rm=TRUE))))
   par(op)
 }
+png(paste("Export_", projn, "_chkplot_hist-box_dur.png",sep=""), width=1280, height=1024)
 simple.hist.and.boxplot(durget)
+dev.off()
+png(paste("Export_", projn, "_chkplot_hist-box_cou.png",sep=""), width=1280, height=1024)
 simple.hist.and.boxplot(couget)
+dev.off()
+png(paste("Export_", projn, "_chkplot_hist-box_ttf.png",sep=""), width=1280, height=1024)
 simple.hist.and.boxplot(ttfget)
+dev.off()
 
 #Hist(log)
 #hist(log(durget), col="red"  , breaks = 300)
