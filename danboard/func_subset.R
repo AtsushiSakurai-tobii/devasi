@@ -1,4 +1,3 @@
-#### work ####
 subsetfunc<-function(){
   #aoilist
   excelsheet  <- readline(paste("What is data sheet?(Excel:attlist,aoilist,...) : "))
@@ -14,8 +13,13 @@ subsetfunc<-function(){
     #NEAR
     subsetparam  <- readline(paste("What is subset's parameter? (NEAR,FAR,...)[",i,"]:"))
     #aoilist$distance=="NEAR"
-    subsetseach  <- paste(excelsheet,"$",subsetobjct,subsetlogic,paste("'",subsetparam,"'",sep=""),sep="")
-    subsetseachn <- paste(subsetseachn,subsetseach,sep="")
+    if(i>1){
+      subsetsep    <- readline(paste("What is subset's separate? (&,|,...)[",i,"]:"))
+    }else{
+      subsetsep    <- ""
+    }
+    subsetseach  <- paste(excelsheet,"$",subsetobjct,subsetlogic,paste("'",subsetparam,"'",sep=""),sep="")    
+    subsetseachn <- paste(subsetseachn,subsetseach,sep=subsetsep)
   }
   print(subsetseachn)
   
@@ -26,5 +30,4 @@ subsetfunc<-function(){
   print(dim(subset.dat))
   return(subset.dat)
 }
-test<-subsetfunc()
-#### work ####
+#test<-subsetfunc()
