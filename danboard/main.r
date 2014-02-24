@@ -5,6 +5,7 @@ setwd("C:/R/dev/apps/danboard/")
 #myfuncの読み込み
 source("func_my.r")
 source("func_save.r")
+source("func_spsstable.r")
 
 #データの読み込み
 source("dataread.r")
@@ -14,13 +15,16 @@ source("check_diff.r")
 source("check_aoidata_metrics.r")
 source("check_aoidata_plot.r")
 
+#SPSS用アウトプット(テーブル)
+source("spsstable.r")
+
 
 #aoidf関数(aoiテーブルデータ)の読み込み
 #単一プロジェクト使用のためコメント化
 #source("func_aoitable.r")
 
 #subset条件に対してaoiテーブルデータを出力する
-source(paste(projn,"_aoisubset.R",sep="")
+source(paste(projn,"_aoisubset.R",sep=""))
 
 #基礎プロット
 source("basicplot.r")
