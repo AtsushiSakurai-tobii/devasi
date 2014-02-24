@@ -1,4 +1,4 @@
-setwd("C:/R/dev/apps/datacheck/")
+#setwd("C:/R/dev/apps/datacheck/")
 library("gdata", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
 library("lattice", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
 library("data.table", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
@@ -13,7 +13,7 @@ library("data.table", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
 (ttf)
 
 #<No Modifier>:対象AOIの他のデータは除く
-aoigetlist <- subset(aoilist, aoilist$check == "valid" & aoilist$name2 != "<No Modifier>")
+#aoigetlist <- subset(aoilist, aoilist$check == "valid" & aoilist$name2 != "<No Modifier>")
 durgetdm   <- data.matrix(dur[, aoigetlist$duration])
 cougetdm   <- data.matrix(cou[, aoigetlist$count])
 ttfgetdm   <- data.matrix(ttf[, aoigetlist$ttf])
