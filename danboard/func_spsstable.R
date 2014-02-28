@@ -4,29 +4,36 @@ setwd("C:/R/dev/apps/danboard/")
 #str(couget)
 #str(ttfget)
 
-SPSSTABLE<-function(){
+SPSSTABLE <- function(){
+  library("reshape2", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
   
-  ############ work ############
   d.melt   <- melt(durget, id=rownames(durget))
   c.melt   <- melt(couget, id=rownames(couget))
   t.melt   <- melt(ttfget, id=rownames(ttfget))
-  dct.melt <- cbind(d.melt, c.melt[c("Var2","value")], t.melt[c("Var2","value")])
-  
-  (metrics.df <- dct.melt)
-  (surveyno   <- data.frame(t(attlist[1,1:length(unique(metrics.df$Var1))+2])))
-  (metrics.cb <- cbind(metrics.df, ID = rownames(metrics.df), surveyno))
-  
+  head(dct.melt<- data.frame(d.melt,c.melt,t.melt))
+  head(
+    dct.melt.df <- data.frame(
+        Index    = rownames(dct.melt),
+        TobiiNo  = as.vector(as.matrix(attlist[1,att[dct.melt.df$subs,"att01"]+2])),
+        subs     = dct.melt$Var1,
+        d.aoi    = dct.melt$Var2,
+        c.aoi    = dct.melt$Var2.1,
+        t.aoi    = dct.melt$Var2.2,
+        Duration = dct.melt$value,
+        Count    = dct.melt$value.1,
+        TTF      = dct.melt$value.2,
+        d.N      = ifelse(is.na(dct.melt$value), "",1),
+        c.N      = ifelse(is.na(dct.melt$value.1), "",1),
+        t.N      = ifelse(is.na(dct.melt$value.2), "",1)
+    )
+  )
+    
   metricsinfo <- data.frame()
-  for(i in 1:nrow(metrics.cb)){
-    metricsinfo <- rbind(metricsinfo, aoilist[metrics.cb$Var2[i]==aoilist$duration,])
+  for(i in 1:nrow(dct.melt.df)){
+    metricsinfo <- rbind(metricsinfo, aoilist[dct.melt.df$d.aoi[i]==aoilist$duration,])
   }
   
-  a<-cbind(metrics.cb,metricsinfo)
-  
-  projmelt   <- paste("C:/R/dev/apps/datacheck/", projn, "/Export_", projn, "_Melt_ver1.1.csv" , sep="")
-  write.csv(a, file=projmelt, append=T, quote=T, col.names=T)
-  ############ work ############
-
-  return(tbl)
+  head(spss.table    <- cbind(dct.melt.df, metricsinfo))
+  rownames(rmorimilk.spss) <- NULL
+  return(spss.table)
 }
-melt(couget, id=rownames(couget))
