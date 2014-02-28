@@ -15,7 +15,7 @@ dir.create(paste("C:/R/dev/apps/danboard/usr/out/", projn, "/", sep=""), showWar
 projs <- paste("C:/R/dev/apps/danboard/usr/lib/", projn,"_Master_r.xlsx",sep="")
 
 #読み込み  
-attlist   <- read.xlsx( projs, 1,  encoding="UTF-8", header=TRUE, row.names=TRUE)
+attlist   <- read.xlsx( projs, 1,  encoding="UTF-8", header=TRUE)
 att       <- read.xlsx( projs, 2,  encoding="UTF-8", header=TRUE, row.names=TRUE)
 queslist  <- read.xlsx( projs, 3,  encoding="UTF-8", header=TRUE, row.names=TRUE)
 ques      <- read.xlsx( projs, 4,  encoding="UTF-8", header=TRUE, row.names=TRUE)
