@@ -1,20 +1,17 @@
-setwd("C:/R/dev/apps/danboard/")
 #SPSS用フォーマット
 #str(durget)
 #str(couget)
 #str(ttfget)
 
 SPSSTABLE <- function(){
-  library("reshape2", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
-  
+
   d.melt   <- melt(durget, id=rownames(durget))
   c.melt   <- melt(couget, id=rownames(couget))
   t.melt   <- melt(ttfget, id=rownames(ttfget))
   head(dct.melt<- data.frame(d.melt,c.melt,t.melt))
   head(
     dct.melt.df <- data.frame(
-        Index    = rownames(dct.melt),
-        TobiiNo  = as.vector(as.matrix(attlist[1,att[dct.melt.df$subs,"att01"]+2])),
+        TobiiNo  = as.vector(as.matrix(attlist[1,att[dct.melt$Var1,"att01"]+3])),
         subs     = dct.melt$Var1,
         d.aoi    = dct.melt$Var2,
         c.aoi    = dct.melt$Var2.1,
@@ -25,6 +22,7 @@ SPSSTABLE <- function(){
         d.N      = ifelse(is.na(dct.melt$value), "",1),
         c.N      = ifelse(is.na(dct.melt$value.1), "",1),
         t.N      = ifelse(is.na(dct.melt$value.2), "",1)
+        
     )
   )
     
@@ -34,6 +32,6 @@ SPSSTABLE <- function(){
   }
   
   head(spss.table    <- cbind(dct.melt.df, metricsinfo))
-  rownames(rmorimilk.spss) <- NULL
+  rownames(spss.table) <- NULL
   return(spss.table)
 }
