@@ -1,16 +1,5 @@
 #setwd("C:/R/dev/apps/datacheck/")
-library("gdata", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
-library("lattice", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
-library("data.table", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
-
-#データの読み込み
-#source("dataread.r")
-
 #VD/VC/TTFのメトリクス読み込み
-(aoilist)
-(dur)
-(cou)
-(ttf)
 
 #<No Modifier>:対象AOIの他のデータは除く
 #aoigetlist <- subset(aoilist, aoilist$check == "valid" & aoilist$name2 != "<No Modifier>")
@@ -24,15 +13,15 @@ couget <- cougetdm[,order(colnames(cougetdm))]
 ttfget <- ttfgetdm[,order(colnames(ttfgetdm))]
 
 #基本データの確認
-str(durget)
-str(couget)
-str(ttfget)
-dim(durget)
-dim(couget)
-dim(ttfget)
-summary(durget)
-summary(couget)
-summary(ttfget)
+#str(durget)
+#str(couget)
+#str(ttfget)
+#dim(durget)
+#dim(couget)
+#dim(ttfget)
+#summary(durget)
+#summary(couget)
+#summary(ttfget)
 
 #NA値を除外する:TRUE値で確認する
 Nadur <- apply(durget, 2, is.na)
@@ -41,6 +30,16 @@ Nattf <- apply(ttfget, 2, is.na)
 NadurSum <- apply(Nadur, 2, sum)
 NacouSum <- apply(Nacou, 2, sum)
 NattfSum <- apply(Nattf, 2, sum)
+
+###############Test
+#
+library("plyr", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
+#nmissing関数:欠損値の個数をカウントする
+nmissing<-function(x)sum(is.na(x))
+colwise(nmissing)(data.frame(durget))
+
+ddply(durget,.(rownames(durget)),colwise(nmissing))
+###############
 
 #有効データ数(NA値を除く有効データの個数を確認する)
 (durchk <- t(data.frame(nrow(durget) - NadurSum)))
