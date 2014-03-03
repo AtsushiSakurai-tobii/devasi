@@ -26,7 +26,7 @@ savefunc <- function (SAVE,SAVEFILE) {
       #保存ファイル名
       projc   <- paste("C:/R/dev/apps/danboard/usr/out/", projn, "/Export_", projn, "_SPSS.csv" , sep="")
       #ファイルを保存する
-      write.csv(SAVEFILE, file=projc, append=T, quote=T, col.names=T)
+      write.csv(SAVEFILE, file=projc, append=T, quote=T, col.names=T, row.names=FALSE)
       print("save")
     }else{
       print("保存しませんでした")
