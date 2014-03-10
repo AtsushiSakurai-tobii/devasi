@@ -1,7 +1,7 @@
 #保存用関数
 #SAVE==1:check_aoidata_metrics.r
 
-savefunc <- function (SAVE,SAVEFILE) {
+savefunc <- function (SAVE,SAVEFILE,FILENAME) {
   saveflg <- 0
   saveflg <- as.numeric(readline("Save 1:YES,0:NO>>Enter : "))
   
@@ -28,6 +28,32 @@ savefunc <- function (SAVE,SAVEFILE) {
       #ファイルを保存する
       write.csv(SAVEFILE, file=projc, append=T, quote=T, col.names=T, row.names=FALSE)
       print("save")
+    }else{
+      print("保存しませんでした")
+    }
+    
+  }else if(SAVE==3){
+    
+    if(saveflg>0){
+      
+      export_attlist   <- paste("C:/R/dev/apps/datacheck/", projectname, "/Generate_", projectname, FILENAME , sep="")
+      write.csv(SAVEFILE, file=export_attlist, append=T, quote=T, col.names=T)
+      
+      print("save")
+      
+    }else{
+      print("保存しませんでした")
+    }
+    
+  }else if(SAVE==4){
+    
+    if(saveflg>0){
+      
+      export_attdata   <- paste("C:/R/dev/apps/datacheck/", projectname, "/Generate_", projectname, FILENAME , sep="")
+      write.csv(SAVEFILE, file=export_attdata, append=T, quote=T, col.names=T)
+      
+      print("save")
+      
     }else{
       print("保存しませんでした")
     }
