@@ -33,12 +33,12 @@ NattfSum <- apply(Nattf, 2, sum)
 
 ###############Test
 #
-library("plyr", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
+#library("plyr", lib.loc="C:/Users/asi/Documents/R/R-2.15.1/library")
 #nmissing関数:欠損値の個数をカウントする
-nmissing<-function(x)sum(is.na(x))
-colwise(nmissing)(data.frame(durget))
-
-ddply(durget,.(rownames(durget)),colwise(nmissing))
+#nmissing<-function(x)sum(is.na(x))
+#colwise(nmissing)(data.frame(durget))
+#
+#ddply(durget,.(rownames(durget)),colwise(nmissing))
 ###############
 
 #有効データ数(NA値を除く有効データの個数を確認する)
