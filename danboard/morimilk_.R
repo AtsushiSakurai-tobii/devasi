@@ -17,36 +17,26 @@ source("check_diff.r")
 source("check_aoidata_plot.r")
 
 #SPSSデータと被験者情報をマージする
-#(1)AOI情報のデータセット
-spss.table <- SPSSTABLE()
-
-#(2)被験者情報用データセット
+#(1)被験者情報用データセット
 attlist.subset <- subset(attlist, attlist$check == "valid")
 att.df    　　 <- data.frame(att[, attlist.subset$attno])
-
 attdata.df     <- data.frame(ATTDATADF(attlist.subset, att.df))
-attdata.table  <- data.frame(ATTTABLE(spss.table, attdata.df))
+colnames(attdata.df)<-c("TobiiNo","Sex","Age","Occupation ")
 
-#(3)インタビュー情報用データセット
+#(2)インタビュー情報用データセット
 rec <- intev[,1:4]
 enj <- intev[,5:8]
 colnames(rec) <- c("P","Q","R","T")
 colnames(enj) <- c("P","Q","R","T")
-rec.melt <- melt(as.matrix(rec), id=rownames(rec))
-enj.melt <- melt(as.matrix(enj), id=rownames(enj))
+rec.melt <- FunctionMelt(rec)
+enj.melt <- FunctionMelt(enj)
+colnames(rec.melt)<-c("subs","aoigroup1","Recognition")
+colnames(enj.melt)<-c("subs","aoigroup1","Enjoyment")
+intev.melt <- cbind(rec.melt, Enjoyment=enj.melt$Enjoyment)
 
-rec.datatable<-DATATABLE(spss.table, rec.melt)
-enj.datatable<-DATATABLE(spss.table, enj.melt)
-
-colnames(rec.datatable)<-c("subs","aoigroup1","Recognition")
-colnames(enj.datatable)<-c("subs","aoigroup1","Enjoyment")
-
-intev.datatable <- cbind(rec.datatable, Enjoyment=enj.datatable$Enjoyment)
-
-
-#(4)AOI情報と被験者情報のマージと整形
-morimilk <- cbind(attdata.table, spss.table,intev.datatable)
-morimilk <- morimilk[order(morimilk$TobiiNo, morimilk$d.aoi),]
+#(3)AOI情報と被験者情報のマージと整形
+morimilk <- SPSSTABLE()
+morimilk <- morimilk[order(morimilk$TobiiNo, morimilk$aoigroup4,morimilk$d.aoi),]
 morimilk <- transform(morimilk, Index=c(1:nrow(morimilk)))
 morimilk <- morimilk[c(
             "Index",
@@ -59,16 +49,16 @@ morimilk <- morimilk[c(
             #"c.aoi",
             #"t.aoi",
             "observations",
-            "ImageFile",
-            "aoiname1",
-            "aoigroup1",
-            "aoigroup2",
-            "aoigroup3",
-            "aoigroup4",
-            "aoigroup5",
-            "aoigroup6",
-            "aoigroup8",
+            #"ImageFile",
+            #"aoiname1",
+            #"aoigroup1",
+            #"aoigroup2",
+            #"aoigroup3",
+            #"aoigroup5",
+            #"aoigroup6",
+            "aoigroup7",
             "details",
+            "aoigroup4",
             "Duration",
             "Count",
             "TTF",
@@ -79,6 +69,11 @@ morimilk <- morimilk[c(
             "Recognition"
             )]
 savefunc(2,morimilk)
+
+
+
+
+
 
 #################work
 #arrange(morimilk, TobiiNo,d.aoi)
