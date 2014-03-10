@@ -25,10 +25,24 @@ SPSSTABLE <- function(){
         
     )
   )
+  
     
   metricsinfo <- data.frame()
+  attdata.table <- data.frame()
+  meltdata.table <- data.frame()
   for(i in 1:nrow(dct.melt.df)){
-    metricsinfo <- rbind(metricsinfo, aoilist[dct.melt.df$d.aoi[i]==aoilist$duration,])
+    metricsinfo <- rbind(metricsinfo, aoilist[dct.melt.df$d.aoi[i]==aoilist$duration,])###
+    
+    #ATTDATA  <- attdata.df
+    attdata.get   <- ATTDATA[dct.melt.df$TobiiNo[i],]
+    attdata.table <- rbind(attdata.table, attdata.get)###
+    
+    #SELECTED <- (rec <- intev[,1:4])
+    #meltする
+    selected.melt <- melt(as.matrix(SELECTED), id=rownames(SELECTED))
+    
+    meltdata.get   <- selected.melt[c(PRO.SPSS$subs[i],PRO.SPSS$aoigroup1[i]),]
+    meltdata.table <- rbind(meltdata.table, meltdata.get)###
   }
   
   head(spss.table    <- cbind(dct.melt.df, metricsinfo))
