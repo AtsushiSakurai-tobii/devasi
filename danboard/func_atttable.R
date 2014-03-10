@@ -3,8 +3,8 @@
 #PRO.SPSS :取得したAOIデータ(spss.table)
 #ATTDATA  :取得した被験者データ(attdata.df)
 #
-PRO.SPSS <- spss.table
-ATTDATA  <- attdata.df
+#PRO.SPSS <- spss.table
+#ATTDATA  <- attdata.df
 
 ATTTABLE <- function(PRO.SPSS, ATTDATA){
   
