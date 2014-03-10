@@ -5,10 +5,6 @@
 #projn <- "YAYOI14"
 projectname <- myfunc()
 
-#プロジェクトディレクトリの作成
-dir.create(paste("C:/R/dev/apps/datacheck/", projectname, "/", sep=""), showWarnings = TRUE)
-dir.create(paste("C:/R/dev/apps/danboard/usr/out/", projectname, "/", sep=""), showWarnings = TRUE)
-
 #Rシートを指定
 projectsheet <- paste("C:/R/dev/apps/danboard/usr/lib/", projectname,"_Master_r.xlsx",sep="")
 

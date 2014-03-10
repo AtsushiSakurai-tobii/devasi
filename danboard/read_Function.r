@@ -17,3 +17,10 @@ source("func_spsstable.r")
 source("func_att.R")
 ##データテーブルに対してリストデータに変換する>melt適用
 source("func_atttable.R")
+
+source("func_melt.R")
+
+#R static
+source("FunctionPercent.R")
+source("FunctionGroupOfObject.R")
+source("FunctionHistAndBoxplot.R")
