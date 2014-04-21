@@ -5,12 +5,15 @@ savefunc <- function (SAVE,SAVEFILE,FILENAME) {
   saveflg <- 0
   saveflg <- as.numeric(readline("Save 1:YES,0:NO>>Enter : "))
   
+  #保存日
+  saveday <- format(Sys.Date(), format="%y-%m-%d")
+  
   if(SAVE==1){
     if(saveflg>0){
       #保存ディレクトリを作成する
-      dir.create(paste("C:/R/dev/apps/datacheck/", projn, "/", sep=""), showWarnings = TRUE)
+      dir.create(paste("C:/R/dev/apps/datacheck/", projectname, "/", sep=""), showWarnings = TRUE)
       #保存ファイル名
-      projc   <- paste("C:/R/dev/apps/datacheck/", projn, "/Export_", projn, "_AOIData_Checked.csv" , sep="")
+      projc   <- paste("C:/R/dev/apps/datacheck/", projectname, "/", saveday, "_Export_", projectname, "_AOIData_Checked.csv" , sep="")
       #ファイルを保存する
       write.csv(SAVEFILE, file=projc, append=T, quote=T, col.names=T)
       print("save")
@@ -22,9 +25,9 @@ savefunc <- function (SAVE,SAVEFILE,FILENAME) {
     
     if(saveflg>0){
       #保存ディレクトリを作成する
-      dir.create(paste("C:/R/dev/apps/danboard/usr/out/", projn, "/", sep=""), showWarnings = TRUE)
+      dir.create(paste("C:/R/dev/apps/danboard/usr/out/", projectname, "/", sep=""), showWarnings = TRUE)
       #保存ファイル名
-      projc   <- paste("C:/R/dev/apps/danboard/usr/out/", projn, "/Export_", projn, "_SPSS.csv" , sep="")
+      projc   <- paste("C:/R/dev/apps/danboard/usr/out/", projectname, "/", saveday, "_Export_", projectname, "_SPSS.csv" , sep="")
       #ファイルを保存する
       write.csv(SAVEFILE, file=projc, append=T, quote=T, col.names=T, row.names=FALSE)
       print("save")
@@ -36,7 +39,7 @@ savefunc <- function (SAVE,SAVEFILE,FILENAME) {
     
     if(saveflg>0){
       
-      export_attlist   <- paste("C:/R/dev/apps/datacheck/", projectname, "/Generate_", projectname, FILENAME , sep="")
+      export_attlist   <- paste("C:/R/dev/apps/datacheck/", projectname, "/", saveday, "_Generate_", projectname, FILENAME , sep="")
       write.csv(SAVEFILE, file=export_attlist, append=T, quote=T, col.names=T)
       
       print("save")
@@ -49,7 +52,7 @@ savefunc <- function (SAVE,SAVEFILE,FILENAME) {
     
     if(saveflg>0){
       
-      export_attdata   <- paste("C:/R/dev/apps/datacheck/", projectname, "/Generate_", projectname, FILENAME , sep="")
+      export_attdata   <- paste("C:/R/dev/apps/datacheck/", projectname, "/", saveday, "_Generate_", projectname, FILENAME , sep="")
       write.csv(SAVEFILE, file=export_attdata, append=T, quote=T, col.names=T)
       
       print("save")

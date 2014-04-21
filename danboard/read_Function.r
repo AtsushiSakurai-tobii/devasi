@@ -22,5 +22,8 @@ source("func_melt.R")
 
 #R static
 source("FunctionPercent.R")
-source("FunctionGroupOfObject.R")
 source("FunctionHistAndBoxplot.R")
+source("FunctionGroupOfObject.R")
+source("FunctionGroupOfAttribute.R")
+source("FunctionPercentOfGpObject.R")
+source("FunctionPercentOfGpAttribute.R")

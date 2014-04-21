@@ -21,21 +21,23 @@ FunctionGroupOfAttribute<-function(OBJECT,METRIX,LIST,ATTRIBUTE){
     ##Generate plots
     #
     #Histgram with Boxplot
-    png(paste(getwd(),"/usr/out/",projectname,"/FunctionGroupOfAttribute_", projectname, "_Hist-Boxplot_",OBJECT,"_Group-",ATTRIBUTE,"_",attribute.unique[i],".png",sep=""), width=1280, height=1024)
+    text.iconv <- iconv(attribute.unique[i],'UTF-8','SHIFT_JIS')
+#    png(paste(getwd(),"/usr/out/",projectname,"/FunctionGroupOfAttribute_", projectname, "_Hist-Boxplot_",OBJECT,"_Group-",ATTRIBUTE,"_",attribute.unique[i],".png",sep=""), width=1280, height=1024)
+    png(paste(getwd(),"/usr/out/",projectname,"/FunctionGroupOfAttribute_", projectname, "_Hist-Boxplot_",OBJECT,"_Group-",ATTRIBUTE,"_",text.iconv,".png",sep=""), width=1280, height=1024)
     HistAndBoxplot(aoidata.group, paste("Histgram of", OBJECT, ".aoidata.group[", attribute.unique[i],"]", sep=""))
     dev.off()
     
     #QQnorm
-    png(paste(getwd(),"/usr/out/",projectname,"/FunctionGroupOfAttribute_", projectname, "_QQnormplot_",OBJECT,"_Group-",ATTRIBUTE,"_",attribute.unique[i],".png",sep=""), width=1280, height=1024)
-    qqnorm( aoidata.group , main=paste("Norm Q-Q Plot of", OBJECT, ".aoidata.group[", attribute.unique[i],"]", sep=""))
-    qqline( aoidata.group, lwd=2, col="red" )
-    dev.off()
+#    png(paste(getwd(),"/usr/out/",projectname,"/FunctionGroupOfAttribute_", projectname, "_QQnormplot_",OBJECT,"_Group-",ATTRIBUTE,"_",attribute.unique[i],".png",sep=""), width=1280, height=1024)
+#    qqnorm( aoidata.group , main=paste("Norm Q-Q Plot of", OBJECT, ".aoidata.group[", attribute.unique[i],"]", sep=""))
+#    qqline( aoidata.group, lwd=2, col="red" )
+#    dev.off()
     
     #Scatterplot
-    xx<-ifelse(is.na(aoidata.group),0,aoidata.group)
-    png(paste(getwd(),"/usr/out/",projectname,"/FunctionGroupOfAttribute_", projectname, "_Scatterplot_",OBJECT,"_Group-",ATTRIBUTE,"_",attribute.unique[i],".png",sep=""), width=1280, height=1024)
-    pairs.panels(xx,main=paste("Scatterplot of", OBJECT, ".aoidata.group[", attribute.unique[i],"]", sep=""))
-    dev.off()
+#    xx<-ifelse(is.na(aoidata.group),0,aoidata.group)
+#    png(paste(getwd(),"/usr/out/",projectname,"/FunctionGroupOfAttribute_", projectname, "_Scatterplot_",OBJECT,"_Group-",ATTRIBUTE,"_",attribute.unique[i],".png",sep=""), width=1280, height=1024)
+#    pairs.panels(xx,main=paste("Scatterplot of", OBJECT, ".aoidata.group[", attribute.unique[i],"]", sep=""))
+#    dev.off()
     
   }
 }
