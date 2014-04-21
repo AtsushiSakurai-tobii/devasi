@@ -24,7 +24,7 @@ FunctionPercentOfGpObject<-function(OBJECT,METRIX,LIST,ATTRIBUTE){
     text.iconv <- iconv(attribute.unique[i],'UTF-8','SHIFT_JIS')
 #    png(paste(getwd(),"/usr/out/",projectname,"/FunctionPercentOfGpObject_", projectname, "_Hist-Boxplot_",OBJECT,"_Group-",ATTRIBUTE,"_",attribute.unique[i],".png",sep=""), width=1280, height=1024)
     png(paste(getwd(),"/usr/out/",projectname,"/FunctionPercentOfGpObject_", projectname, "_Hist-Boxplot_",OBJECT,"_Group-",ATTRIBUTE,"_",text.iconv,".png",sep=""), width=1280, height=1024)
-    HistAndBoxplot(aoidata.group, paste("Histgram of", OBJECT, ".aoidata.group[", attribute.unique[i],"]", sep=""))
+    HistAndBoxplot(aoidata.group, paste("Histgram of", OBJECT, ".aoidata.group[", attribute.unique[i],"]", sep=""),OBJECT)
     dev.off()
     
     #QQnorm

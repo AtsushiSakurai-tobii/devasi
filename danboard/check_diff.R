@@ -64,3 +64,4 @@ if(sum(CheckData$diff_DC) == 0 && sum(CheckData$diff_DF) == 0 && sum(CheckData$d
   print("CheckData=>NG")
   print(summary(CheckData))
 }
+setwd("C:/R/dev/apps/danboard")

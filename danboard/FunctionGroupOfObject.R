@@ -27,7 +27,7 @@ FunctionGroupOfObject<-function(OBJECT,METRIX,LIST,ATTRIBUTE){
 #    png(paste(getwd(),"/usr/out/",projectname,"/FunctionGroupOfObject_", projectname, "_Hist-Boxplot_",OBJECT,"_Group-",ATTRIBUTE,"_",attribute.unique[i],".png",sep=""), width=1280, height=1024)
      png(paste(getwd(),"/usr/out/",projectname,"/FunctionGroupOfObject_", projectname, "_Hist-Boxplot_",OBJECT,"_Group-",ATTRIBUTE,"_",text.iconv,".png",sep=""), width=1280, height=1024)
 #    HistAndBoxplot(aoidata.group, paste("Histgram of", OBJECT, ".aoidata.group[", attribute.unique[i],"]", sep=""))
-    HistAndBoxplot(aoidata.group, iconv(paste("Histgram of", OBJECT, ".aoidata.group[", attribute.unique[i],"]", sep=""),'UTF-8','SHIFT_JIS'))
+    HistAndBoxplot(aoidata.group, iconv(paste("Histgram of", OBJECT, ".aoidata.group[", attribute.unique[i],"]", sep=""),'UTF-8','SHIFT_JIS'), OBJECT)
     dev.off()
     
     #QQnorm
