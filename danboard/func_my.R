@@ -6,8 +6,10 @@ myfunc <- function () {
   #as.numeric(unlist(strsplit(Str, ",")))
   
   #プロジェクトディレクトリの作成
-  dir.create(paste("C:/R/dev/apps/datacheck/", Str, "/", sep=""), showWarnings = TRUE)
-  dir.create(paste("C:/R/dev/apps/danboard/usr/out/", Str, "/", sep=""), showWarnings = TRUE)
+  #/danbordをカレントディレクトリとして相対パスを指定（再帰的(recursive=TRUE)）
+  dir.create(paste("../datacheck/", Str, "/", sep=""), showWarnings = TRUE, recursive = TRUE)
+  dir.create(paste("./usr/out/", Str, "/", sep=""), showWarnings = TRUE, recursive = TRUE)
+  dir.create(paste("./usr/lib/", sep=""), showWarnings = TRUE, recursive = TRUE) #libディレクトリもここで作成
   
   return(Str)
   

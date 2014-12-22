@@ -1,4 +1,4 @@
-setwd(paste("C:/R/dev/apps/datacheck/", projectname, sep=""))
+setwd(paste("../datacheck/", projectname, sep=""))
 #plotCheck
 (durget)
 (couget)

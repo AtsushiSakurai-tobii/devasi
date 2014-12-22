@@ -1,14 +1,16 @@
 ##
-setwd("C:/R/dev/apps/danboard/")
-#mainファイル
+##ユーザ選択
+## 1: Atsushiの場合ならびに、2: Hajimeの場合でそれぞれ対応するカレントディレクトリをセット
+switch(menu(c("Atsushi", "Hajime"), title="0: exit") + 1, cat("Nothing done\n"), setwd("C:/R/dev/apps/danboard/"), setwd("/Users/sasMBP/Documents/Tobii_Japan/devasi/danboard/"))->dir.danbord
 
+#mainファイル
 #myfuncの読み込み
 source("func_my.r")
 source("func_save.r")
 source("func_spsstable.r")
 
 #データの読み込み
-source("dataread.r")
+source("read_data.r")
 
 #データチェック
 source("check_diff.r")
