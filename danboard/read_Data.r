@@ -6,7 +6,8 @@
 projectname <- myfunc()
 
 #Rシートを指定
-projectsheet <- paste("C:/R/dev/apps/danboard/usr/lib/", projectname,"_Master_r.xlsx",sep="")
+setwd("./usr/lib")
+projectsheet <- paste(projectname,"_Master_r.xlsx",sep="")
 
 #読み込み  
 attlist   <- read.xlsx( projectsheet, 1,  encoding="UTF-8", header=TRUE)
@@ -21,3 +22,4 @@ aoilist   <- read.xlsx( projectsheet, 9,  encoding="UTF-8", header=TRUE, row.nam
 dur       <- read.xlsx( projectsheet, 10, encoding="UTF-8", stringsAsFactors=FALSE, header=TRUE, row.names=TRUE)
 cou       <- read.xlsx( projectsheet, 11, encoding="UTF-8", stringsAsFactors=FALSE, header=TRUE, row.names=TRUE)
 ttf       <- read.xlsx( projectsheet, 12, encoding="UTF-8", stringsAsFactors=FALSE, header=TRUE, row.names=TRUE)
+setwd("../");setwd("../")#ディレクトリをdanboardに戻す
